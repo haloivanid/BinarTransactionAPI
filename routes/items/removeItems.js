@@ -8,7 +8,6 @@ app.delete("/items", (req, res) => {
     if (id) {
         removeData.removeDataById("items", id);
     }
-
     if (query) {
         removeData.removeDataByQuery("items", query);
     } else {

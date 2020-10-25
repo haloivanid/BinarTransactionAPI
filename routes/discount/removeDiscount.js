@@ -10,7 +10,6 @@ app.delete("/discount", (req, res) => {
     if (id) {
         removeData.removeDataById("discount", id);
     }
-
     if (query) {
         removeData.removeDataByQuery("discount", query);
     } else {
