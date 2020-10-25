@@ -1,4 +1,5 @@
-const db = require("../connections/dbConnection")
+const db = require("../connections/dbConnection");
+const transactionItemModel = require("../models/transactionItemModel");
 
 /**
  * Edit data
@@ -28,6 +29,9 @@ function editData(tableName, id, data) {
     }
     if (tableName == 'user') {
       shapedData = shapeObject(data, userModel)
+    }
+    if (tableName == 'item') {
+      shapedData = shapeObject(data, transactionItemModel)
     }
 
     if (!shapedData) return false
