@@ -24,7 +24,7 @@ app.post('/discount', (req, res) => {
         }
     } else {
         // called if item already exists
-        res.status(409).send('discount is already exist, please search for other discount')
+        res.status(409).send('discount is already exist, please add new discount')
     }
 })
 
