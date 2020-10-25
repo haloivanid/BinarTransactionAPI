@@ -25,7 +25,10 @@ app.post('/auth/register', (req, res) => {
       res.status(400).send('Bad request')
     }
   }
-  
+  else {
+    // called if user is already exists
+    res.status(409).send('User exists, please log in')
+  }
 })
 
 module.exports = app
