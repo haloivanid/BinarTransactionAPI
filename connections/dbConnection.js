@@ -9,7 +9,10 @@ db.defaults({
   customer: [],
   admin: [],
   discount: [],
-  items: []
+  items: [],
+  user: [],
+  transaction: [],
+  item : []
 })
   .write()
 
