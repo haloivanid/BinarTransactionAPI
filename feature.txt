@@ -1,0 +1,28 @@
+Draft Project Plan Feature:
+- /auth/register
+    (customer => C)
+- /auth/login
+    (all => R)
+
+(ikhwan bayu)
+- /user
+    (admin => RU)
+    (customer => RUD)
+
+kemal
+- /item
+    (admin => CRUD )
+    (customer => R)
+- /discount
+    (admin => CRUD )
+    (customer => R)
+
+ermy yuhari
+- /transaction/item
+    (admin => CRU)
+    (customer => CR)
+
+ivan
+- /transaction
+    (admin => CRU )
+    (customer => RU)
