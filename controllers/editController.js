@@ -1,11 +1,7 @@
 const { lowerFirst } = require("../connections/dbConnection");
-const adminModel = require("../models/adminModel");
-const customerModel = require("../models/customerModel")
-const shapeObject = require("../helpers/shapeObjectHelper")
 const db = require("../connections/dbConnection");
-const shapeObject = require("../helpers/shapeObjectHelper");
-const itemsModel = require("../models/itemsModel");
-const discountModel = require("../models/discountModel");
+const modelLoader = require("../helpers/modelsLoader");
+const shapeObject = require("../helpers/shapeObjectHelper")
 
 /**
  * Edit data
@@ -28,21 +24,8 @@ function editData(tableName, id, data) {
     .find({ id })
     .value()
   if (searchResult) {
-    let shapedData;
     data.id = id
-    if (tableName == 'customer') {
-      shapedData = shapeObject(data, customerModel)
-    }
-    if (tableName == 'admin') {
-      shapedData = shapeObject(data, adminModel)
-    }
-    if (tableName == 'items') {
-      shapedData = shapeObject(data, itemsModel)
-    }
-    if (tableName == 'discount') {
-      shapedData = shapeObject(data, discountModel)
-    }
-    console.log(shapedData, "--shaped data")
+    const shapedData = shapeObject(data, modelLoader(tableName))
     if (!shapedData) return false
     let editedData = db.get(tableName)
       .find({ id })
