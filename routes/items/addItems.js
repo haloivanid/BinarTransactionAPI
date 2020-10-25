@@ -24,7 +24,7 @@ app.post('/items', (req, res) => {
         }
     } else {
         // called if item already exists
-        res.status(409).send('User admin exists, please log in')
+        res.status(409).send('items already exists, please make input for new items')
     }
 })
 
