@@ -23,11 +23,11 @@ function editData(tableName, id, data) {
   if (searchResult) {
     let shapedData;
     data.id = id
-    if (tableName == 'transaction') {
-      shapedData = shapeObject(data, transactionModel)
+    if (tableName == 'items') {
+      shapedData = shapeObject(data, itemsModel)
     }
-    if (tableName == 'user') {
-      shapedData = shapeObject(data, userModel)
+    if (tableName == 'discount') {
+      shapedData = shapeObject(data, discountModel)
     }
 
     if (!shapedData) return false
