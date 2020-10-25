@@ -6,7 +6,7 @@ const app = express.Router()
 
 app.post('/auth/login', (req, res) => {
   const body = req.body
-  const result = getData('user', body)
+  const result = getData('user', body)[0]
   if (result) {
     const token = signJwt(result)
     result.accessToken = token
