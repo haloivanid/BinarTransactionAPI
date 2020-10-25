@@ -1,6 +1,11 @@
 module.exports = [
   'id',
   'userId',
-  'name',
-  'nominal'
+  'dateTransaction',
+  'totalProduct',
+  'totalPrice',
+  'discountId',
+  'amountTransaction',
+  'payment',
+  'paymentStatus'
 ]
