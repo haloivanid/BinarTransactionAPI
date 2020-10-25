@@ -1,21 +1,31 @@
 const express = require('express')
-const db = require('../../controllers/addController')
+const addData = require('../../controllers/addController')
+const getData = require('../../controllers/getController')
 const app = express.Router()
 // const authorization = require('../../middleware/authorizationMiddleware')
 
 // app.use(authorization)
+
+// uid is a id generator library
+// Reference: https://www.npmjs.com/package/uid
+const uid = require('uid')
+
 app.post('/items', (req, res) => {
     const body = req.body
-    body.userId = req.user.id
-    const result = db.add('items', body)
-    if (!result) {
-        res.status(400).send('Wrong body')
+    const isItemExist = getData('items', body)
+    if (!isItemExist.length) {
+        body.id = uid()
+        const result = addData('items', body)
+        if (result) {
+            res.send(result)
+        } else {
+            // called if body is didn't match
+            res.status(400).send('Bad request')
+        }
     } else {
-        res.send(result)
+        // called if item already exists
+        res.status(409).send('User admin exists, please log in')
     }
-    return
 })
-
-
 
 module.exports = app
