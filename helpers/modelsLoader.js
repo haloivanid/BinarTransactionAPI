@@ -1,4 +1,4 @@
-function modelLoader(tableName) {
+function modelsLoader(tableName) {
     const readDir = require('read-dir-deep');
     const path = require('path')
     const thisDir = path.resolve()
@@ -15,4 +15,4 @@ function modelLoader(tableName) {
     return models
 }
 
-module.exports = modelLoader
+module.exports = modelsLoader

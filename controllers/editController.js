@@ -1,6 +1,6 @@
 const { lowerFirst } = require("../connections/dbConnection");
 const db = require("../connections/dbConnection");
-const modelLoader = require("../helpers/modelsLoader");
+const modelsLoader = require("../helpers/modelsLoader");
 const shapeObject = require("../helpers/shapeObjectHelper")
 
 /**
@@ -25,7 +25,7 @@ function editData(tableName, id, data) {
     .value()
   if (searchResult) {
     data.id = id
-    const shapedData = shapeObject(data, modelLoader(tableName))
+    const shapedData = shapeObject(data, modelsLoader(tableName))
     if (!shapedData) return false
     let editedData = db.get(tableName)
       .find({ id })
