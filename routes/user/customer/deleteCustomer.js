@@ -5,17 +5,17 @@ const shapeObject = require('../../../helpers/shapeObjectHelper')
 
 const app = express.Router()
 
-app.delete('/user/customer', verifyJwt, (req, res) => {
+app.delete('/user', verifyJwt, (req, res) => {
   let keys = ['username']
   const cekKey = shapeObject(req.query, keys)
   if (!cekKey) {
-    return res.status(400).send('bad request cuy')
+    return res.status(400).send('bad request, please input the right format')
   }
-  const result = removeDataByQuery('user', req.query)
+  const result = removeDataByQuery('customer', req.query)
   if (result) {
     res.send(result)
   } else {
-    res.status(400).send('Bad request')
+    res.status(404).send('username is not found')
   }
 })
 

@@ -1,7 +1,6 @@
 const db = require("../connections/dbConnection")
 const shapeObject = require("../helpers/shapeObjectHelper")
-const transactionModel = require("../models/transactionModel")
-const userModel = require("../models/userModel")
+const userModel = require("../models/customerModel")
 const adminModel = require("../models/adminModel")
 
 /**
@@ -24,10 +23,7 @@ function addData(tableName, data) {
   if (typeof data.id !== 'string') return false
 
   let shapedData;
-  if (tableName == 'transaction') {
-    shapedData = shapeObject(data, transactionModel)
-  }
-  if (tableName == 'user') {
+  if (tableName == 'customer') {
     shapedData = shapeObject(data, userModel)
   }
   if (tableName == 'admin') {

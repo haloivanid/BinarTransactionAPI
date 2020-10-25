@@ -1,7 +1,7 @@
 const { lowerFirst } = require("../connections/dbConnection");
 const db = require("../connections/dbConnection");
 const adminModel = require("../models/adminModel");
-const userModel = require("../models/userModel")
+const customerModel = require("../models/customerModel")
 const shapeObject = require("../helpers/shapeObjectHelper")
 
 /**
@@ -27,18 +27,14 @@ function editData(tableName, id, data) {
   if (searchResult) {
     let shapedData;
     data.id = id
-    if (tableName == 'transaction') {
-      shapedData = shapeObject(data, transactionModel)
-    }
-    if (tableName == 'user') {
-      shapedData = shapeObject(data, userModel)
+    if (tableName == 'customer') {
+      shapedData = shapeObject(data, customerModel)
     }
     if (tableName == 'admin') {
       shapedData = shapeObject(data, adminModel)
     }
     console.log(shapedData, "--shaped data")
     if (!shapedData) return false
-
     let editedData = db.get(tableName)
       .find({ id })
       .assign(shapedData)

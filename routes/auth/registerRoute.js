@@ -9,10 +9,15 @@ const uid = require('uid')
 
 app.post('/auth/register', (req, res) => {
   const body = req.body
-  const isUserExists = getData('user', body)
+  // untuk mengecek value username dan password agar tidak kosong
+  if (body.password == "" || body.username == "") { return res.status(400).send('please input username and password') }
+  // mengecek apakah user memasukkan kata administrator sebagai username. 
+  if (body.username == "admin" || body.username == "administrator") { return res.status(400).send('please input another username') }
+  // untuk mengecek apakah username sudah terdaftar atau belum
+  const isUserExists = getData('customer', body)
   if (!isUserExists.length) {
     body.id = uid()
-    const result = addData('user', body)
+    const result = addData('customer', body)
     if (result) {
       res.send(result)
     } else {
