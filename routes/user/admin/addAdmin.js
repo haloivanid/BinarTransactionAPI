@@ -1,18 +1,18 @@
-//this is register route for customer
 const express = require('express')
-const addData = require('../../controllers/addController')
-const getData = require('../../controllers/getController')
+const addData = require('../../../controllers/addController')
+const getData = require('../../../controllers/getController')
+
 const app = express.Router()
 // uid is a id generator library
 // Reference: https://www.npmjs.com/package/uid
 const uid = require('uid')
 
-app.post('/auth/register', (req, res) => {
+app.post('/user/admin', (req, res) => {
   const body = req.body
-  const isUserExists = getData('user', body)
+  const isUserExists = getData('admin', body)
   if (!isUserExists.length) {
     body.id = uid()
-    const result = addData('user', body)
+    const result = addData('admin', body)
     if (result) {
       res.send(result)
     } else {
@@ -21,7 +21,7 @@ app.post('/auth/register', (req, res) => {
     }
   } else {
     // called if user is already exists
-    res.status(409).send('User exists, please log in')
+    res.status(409).send('User admin exists, please log in')
   }
 })
 
