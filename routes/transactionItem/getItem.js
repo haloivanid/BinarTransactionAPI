@@ -3,12 +3,12 @@ const getData = require('../../controllers/getController')
 const app = express.Router()
 
 app.get('/item', (req, res) => {
-    const query = req.query
-    // console.log(req.user.id)
-    // const id = req.user.id
-    // query.userId = id
-    const result = getData('item',query)
-    // console.log(result)
+  const query = req.query
+  // console.log(req.user.id)
+  // const id = req.user.id
+  // query.userId = id
+  const result = getData('transactionItem', query)
+  // console.log(result)
   res.send(result)
 })
 

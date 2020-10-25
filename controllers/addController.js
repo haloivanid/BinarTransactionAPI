@@ -5,7 +5,7 @@ const adminModel = require("../models/adminModel")
 const itemsModel = require("../models/itemsModel")
 const discountModel = require("../models/discountModel")
 const transactionModel = require("../models/transactionModel")
-const itemModel = require("../models/itemModel")
+const itemModel = require("../models/transactionItemModel")
 
 
 /**

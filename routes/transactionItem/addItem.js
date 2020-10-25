@@ -6,7 +6,7 @@ app.post('/item', (req, res) => {
     
     const data = req.body
     // body.userId = req.user.id
-    const result = addData('item', data)
+  const result = addData('transactionItem', data)
     if (!result) {
         res.status(400).send('Wrong body')
       } else {
