@@ -1,8 +1,11 @@
-const db = require("../connections/dbConnection")
 const { lowerFirst } = require("../connections/dbConnection");
 const adminModel = require("../models/adminModel");
 const customerModel = require("../models/customerModel")
 const shapeObject = require("../helpers/shapeObjectHelper")
+const db = require("../connections/dbConnection");
+const shapeObject = require("../helpers/shapeObjectHelper");
+const itemsModel = require("../models/itemsModel");
+const discountModel = require("../models/discountModel");
 
 /**
  * Edit data
@@ -32,6 +35,12 @@ function editData(tableName, id, data) {
     }
     if (tableName == 'admin') {
       shapedData = shapeObject(data, adminModel)
+    }
+    if (tableName == 'items') {
+      shapedData = shapeObject(data, itemsModel)
+    }
+    if (tableName == 'discount') {
+      shapedData = shapeObject(data, discountModel)
     }
     console.log(shapedData, "--shaped data")
     if (!shapedData) return false
