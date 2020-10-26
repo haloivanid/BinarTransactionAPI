@@ -7,8 +7,7 @@ const dateToday = require('../../helpers/dateToday')
 
 //** add transactions */
 app.post('/transaction', (req, res) => {
-    if (Object.keys(req.query).length > 0) return res.status(400).send('query not allowed')
-    if (String(Object.keys(req.body)) != "userId") return res.status(400).send('just insert userId to body')
+    if (Object.keys(req.body).length == 0) return res.status(400).send('body not allowed')
     const bodyStructure = {
         "id": uid(),
         "userId": req.body.userId,
