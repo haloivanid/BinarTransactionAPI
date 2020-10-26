@@ -27,7 +27,6 @@ app.post('/transaction', (req, res) => {
     else {
         res.status(400).send('something bad happend')
     }
-
 })
 
 module.exports = app

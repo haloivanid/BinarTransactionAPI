@@ -1,7 +1,7 @@
 const express = require('express')
 const addData = require('../../controllers/addController')
 const uid = require('uid')
-const dateChecker = require('../../helpers/dateChecker')
+const getData = require('../../controllers/getController')
 const app = express.Router()
 
 app.post('/transaction/item', (req, res) => {
