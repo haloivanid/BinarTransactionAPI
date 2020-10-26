@@ -3,7 +3,6 @@ const app = express.Router()
 const path = require('path')
 const uid = require('uid')
 const addData = require('../../controllers/addController')
-const editData = require('../../controllers/editController')
 const getData = require('../../controllers/getController')
 
 const routesName = path.resolve(__dirname).split('/').pop()
