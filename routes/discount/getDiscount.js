@@ -5,9 +5,8 @@ const getData = require('../../controllers/getController')
 
 // app.use(authorization)
 app.get('/discount', (req, res) => {
-    const body = req.body
     const id = req.query
-    const result = getData('discount', id, body)
+    const result = getData('discount', id)
     if (result) {
         res.send(result)
     } else {
