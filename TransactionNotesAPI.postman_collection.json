@@ -1,0 +1,413 @@
+{
+	"info": {
+		"_postman_id": "f99357ec-0b7a-4bd9-9d25-9b123881a92b",
+		"name": "TransactionNotesAPI",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "users route",
+			"item": [
+				{
+					"name": "registerRoute",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\" : \"cust1\",\n    \"password\" : \"12345abcde\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/auth/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "loginRoute",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\" : \"cust0\",\n    \"password\" : \"12345abcde\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/auth/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "transactions route",
+			"item": [
+				{
+					"name": "get transactions",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/transaction",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"transaction"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "collect transactions",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/transaction/collect",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"transaction",
+								"collect"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add transactions",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"userId\": \"1qhjq2ugiuq\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/transaction",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"transaction"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update transactions",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"id\": \"t8g73hfslay\",\n        \"userId\": \"1qhjq2ugiuq\",\n        \"dateTransaction\": \"2020-10-27\",\n        \"totalProduct\": 4,\n        \"totalPrice\": 37000,\n        \"discountId\": \"t05dk6v2gyb\",\n        \"amountTransaction\": 37000,\n        \"payment\": 18500,\n        \"paymentStatus\": false\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/transaction",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"transaction"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "transactions item route",
+			"item": [
+				{
+					"name": "get transactions item",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/transaction/item",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"transaction",
+								"item"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add transactions item",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"transactionId\": \"t8g73hfslay\",\n    \"itemId\": \"zdm2inxasg7\",\n    \"quantity\": 2\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/transaction/item",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"transaction",
+								"item"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update transactions item",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/transaction/item",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"transaction",
+								"item"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "item route",
+			"item": [
+				{
+					"name": "get item",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/items",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"items"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add item",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"dateTransaction\": \"2020-10-11\",\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/items",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"items"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update item",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"name\": \"anak pitik\",\n        \"itemPrice\": 10000,\n        \"expiredDate\": \"2020-12-25\",\n        \"stock\": 200,\n        \"inDate\": \"2020-10-25\",\n        \"id\": \"9n6gmeed61n\"\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/items",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"items"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "21t8w5adxnt",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "discount route",
+			"item": [
+				{
+					"name": "get discount",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/discount",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"discount"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add discount",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "    {\n        \"value\": 0.5\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/discount",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"discount"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update discount",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"name\": \"anak pitik\",\n        \"itemPrice\": 10000,\n        \"expiredDate\": \"2020-12-25\",\n        \"stock\": 200,\n        \"inDate\": \"2020-10-25\",\n        \"id\": \"9n6gmeed61n\"\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/discount",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"discount"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "21t8w5adxnt",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
