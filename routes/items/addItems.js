@@ -1,14 +1,9 @@
 const express = require('express')
 const addData = require('../../controllers/addController')
 const getData = require('../../controllers/getController')
-const auth = require('../middlewares/jwtMiddleware')
+const auth = require('../../middlewares/jwtMiddleware')
 const app = express.Router()
-// const authorization = require('../../middleware/authorizationMiddleware')
 
-// app.use(authorization)
-
-// uid is a id generator library
-// Reference: https://www.npmjs.com/package/uid
 const uid = require('uid')
 
 app.post('/items', auth.verifyJwt(['admin']), (req, res) => {

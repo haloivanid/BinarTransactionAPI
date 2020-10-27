@@ -2,7 +2,7 @@ const express = require('express')
 const editData = require('../../controllers/editController')
 const app = express.Router()
 const getData = require('../../controllers/getController')
-const auth = require('../middlewares/jwtMiddleware')
+const auth = require('../../middlewares/jwtMiddleware')
 const collectTransactionItem = require('../../helpers/collectTransactionItem')
 
 //** get transactions */

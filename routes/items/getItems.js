@@ -1,10 +1,8 @@
 const express = require('express')
 const app = express.Router()
 const getData = require('../../controllers/getController')
-const auth = require('../middlewares/jwtMiddleware')
-// const authorization = require('../../middleware/authorizationMiddleware')
+const auth = require('../../middlewares/jwtMiddleware')
 
-// app.use(authorization)
 app.get('/items', auth.verifyJwt(['admin', 'customer']), (req, res) => {
     const id = req.query
     const result = getData('items', id)

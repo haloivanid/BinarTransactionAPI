@@ -1,6 +1,6 @@
 const express = require('express')
 const { removeDataByQuery } = require('../../../controllers/removeController')
-const auth = require('../middlewares/jwtMiddleware')
+const auth = require('../../../middlewares/jwtMiddleware')
 const shapeObject = require('../../../helpers/shapeObjectHelper')
 
 const app = express.Router()

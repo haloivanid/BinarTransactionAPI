@@ -1,8 +1,7 @@
 const express = require('express')
 const editData = require('../../../controllers/editController')
 const getData = require('../../../controllers/getController')
-const auth = require('../middlewares/jwtMiddleware')
-const shapeObject = require('../../../helpers/shapeObjectHelper')
+const auth = require('../../../middlewares/jwtMiddleware')
 
 const app = express.Router()
 

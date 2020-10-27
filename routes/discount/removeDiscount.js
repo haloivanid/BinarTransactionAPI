@@ -1,10 +1,8 @@
 const express = require("express");
 const removeData = require("../../controllers/removeController");
 const app = express.Router();
-const auth = require('../middlewares/jwtMiddleware')
-// const authorization = require('../../middleware/authorizationMiddleware')
+const auth = require('../../middlewares/jwtMiddleware')
 
-// app.use(authorization)
 app.delete("/discount", auth.verifyJwt(['admin']), (req, res) => {
     const id = req.query.id;
     const query = req.query;

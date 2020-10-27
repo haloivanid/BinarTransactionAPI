@@ -2,7 +2,7 @@ const express = require('express')
 const addData = require('../../controllers/addController')
 const uid = require('uid')
 const getData = require('../../controllers/getController')
-const auth = require('../middlewares/jwtMiddleware')
+const auth = require('../../middlewares/jwtMiddleware')
 const app = express.Router()
 
 app.post('/transaction/item', auth.verifyJwt(['admin', 'customer']), (req, res) => {

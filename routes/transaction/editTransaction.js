@@ -2,7 +2,7 @@ const express = require('express')
 const app = express.Router()
 const editData = require('../../controllers/editController')
 const getData = require('../../controllers/getController')
-const auth = require('../middlewares/jwtMiddleware')
+const auth = require('../../middlewares/jwtMiddleware')
 
 //** edit transactions */
 app.patch('/transaction', auth.verifyJwt(['admin']), (req, res) => {

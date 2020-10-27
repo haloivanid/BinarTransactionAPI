@@ -2,7 +2,7 @@ const express = require('express')
 const app = express.Router()
 const uid = require('uid')
 const addData = require('../../controllers/addController')
-const auth = require('../middlewares/jwtMiddleware')
+const auth = require('../../middlewares/jwtMiddleware')
 const dateToday = require('../../helpers/dateToday')
 
 //** add transactions */
