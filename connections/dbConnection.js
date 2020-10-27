@@ -10,7 +10,8 @@ db.defaults({
     {
       "id": "0",
       "username": "admin",
-      "password": "admin"
+      "password": "admin",
+      "role": "admin"
     }
   ],
   customer: [],
