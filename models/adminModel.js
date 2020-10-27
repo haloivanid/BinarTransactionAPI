@@ -1,5 +1,6 @@
 module.exports = [
   'id',
   'username',
-  'password'
+  'password',
+  'role'
 ]
