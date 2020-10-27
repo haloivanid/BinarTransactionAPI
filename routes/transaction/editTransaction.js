@@ -2,9 +2,10 @@ const express = require('express')
 const app = express.Router()
 const editData = require('../../controllers/editController')
 const getData = require('../../controllers/getController')
+const auth = require('../middlewares/jwtMiddleware')
 
 //** edit transactions */
-app.patch('/transaction', (req, res) => {
+app.patch('/transaction', auth.verifyJwt(['admin']), (req, res) => {
     const body = req.body
     const id = body.id
     if (!id) return res.status(400).send('not allowed')

@@ -1,11 +1,11 @@
 const express = require('express')
 const editData = require('../../../controllers/editController')
 const getData = require('../../../controllers/getController')
-const { verifyJwt } = require('../../../middlewares/jwtMiddleware')
+const auth = require('../middlewares/jwtMiddleware')
 
 const app = express.Router()
 
-app.patch('/admin', verifyJwt, (req, res) => {
+app.patch('/admin', auth.verifyJwt(['admin']), (req, res) => {
   const body = req.body
   const isUserExists = getData('admin', { username: req.body.username })
   if (isUserExists.length) {

@@ -1,11 +1,11 @@
 const express = require('express')
 const { removeDataByQuery } = require('../../../controllers/removeController')
-const { verifyJwt } = require('../../../middlewares/jwtMiddleware')
+const auth = require('../middlewares/jwtMiddleware')
 const shapeObject = require('../../../helpers/shapeObjectHelper')
 
 const app = express.Router()
 
-app.delete('/user', verifyJwt, (req, res) => {
+app.delete('/user', auth.verifyJwt(['admin', "customer"]), (req, res) => {
   let keys = ['username']
   const cekKey = shapeObject(req.query, keys)
   if (!cekKey) {

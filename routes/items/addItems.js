@@ -1,6 +1,7 @@
 const express = require('express')
 const addData = require('../../controllers/addController')
 const getData = require('../../controllers/getController')
+const auth = require('../middlewares/jwtMiddleware')
 const app = express.Router()
 // const authorization = require('../../middleware/authorizationMiddleware')
 
@@ -10,7 +11,7 @@ const app = express.Router()
 // Reference: https://www.npmjs.com/package/uid
 const uid = require('uid')
 
-app.post('/items', (req, res) => {
+app.post('/items', auth.verifyJwt(['admin']), (req, res) => {
     const body = req.body
     const isItemExist = getData('items', body)
     if (!isItemExist.length) {

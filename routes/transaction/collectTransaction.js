@@ -2,10 +2,11 @@ const express = require('express')
 const editData = require('../../controllers/editController')
 const app = express.Router()
 const getData = require('../../controllers/getController')
+const auth = require('../middlewares/jwtMiddleware')
 const collectTransactionItem = require('../../helpers/collectTransactionItem')
 
 //** get transactions */
-app.get('/transaction/collect', (req, res) => {
+app.get('/transaction/collect', auth.verifyJwt(['admin', 'customer']), (req, res) => {
     const id = req.query.id
     const collectedData = collectTransactionItem(id)
     if (req.query) {

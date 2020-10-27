@@ -1,11 +1,11 @@
 const express = require('express')
 const getData = require('../../../controllers/getController')
-const { verifyJwt } = require('../../../middlewares/jwtMiddleware')
+const auth = require('../middlewares/jwtMiddleware')
 const shapeObject = require('../../../helpers/shapeObjectHelper')
 
 const app = express.Router()
 
-app.get('/user', verifyJwt, (req, res) => {
+app.get('/user', auth.verifyJwt(['admin', "customer"]), (req, res) => {
   //untuk mengecek key yang dimasukkan didalam query
   let keys = ['username']
   const cekKey = shapeObject(req.query, keys)

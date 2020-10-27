@@ -2,11 +2,11 @@ const express = require('express')
 const app = express.Router()
 const uid = require('uid')
 const addData = require('../../controllers/addController')
-const getData = require('../../controllers/getController')
+const auth = require('../middlewares/jwtMiddleware')
 const dateToday = require('../../helpers/dateToday')
 
 //** add transactions */
-app.post('/transaction', (req, res) => {
+app.post('/transaction', auth.verifyJwt(['admin']), (req, res) => {
     if (Object.keys(req.body).length == 0) return res.status(400).send('body not allowed')
     const bodyStructure = {
         "id": uid(),

@@ -1,8 +1,9 @@
 const express = require('express')
 const editData = require('../../controllers/editController')
+const auth = require('../middlewares/jwtMiddleware')
 const app = express.Router()
 
-app.patch('/transaction/item', (req, res) => {
+app.patch('/transaction/item', auth.verifyJwt(['admin', "customer"]), (req, res) => {
     if (Object.keys(req.body).length == 0) return res.status(400).send('body not allowed')
     if (!req.query.id) return res.status(400).send('id in query needed')
     if (!req.body.itemId) {
