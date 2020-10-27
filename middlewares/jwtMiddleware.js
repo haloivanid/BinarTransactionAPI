@@ -38,9 +38,8 @@ function verifyJwt(credential) {
     if (!token) return res.status(400).json("Token is not found!")
     jwt.verify(token, secretKey, (err, decoded) => {
       if (err) return res.status(403).json("Token decode failure!")
-      console.log(decoded);
-      req.userData = decoded;
       if (!credential.includes(decoded.role)) return res.status(403).json("user not allowed")
+      req.userData = decoded;
       next()
     })
   }
