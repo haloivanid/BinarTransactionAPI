@@ -12,15 +12,21 @@ app.post('/transaction/item', (req, res) => {
   }
   else {
     const { transactionId, itemId, quantity } = req.body
-    const transactionItem = {
-      "id": uid(),
-      transactionId,
-      itemId,
-      quantity,
-      "price": getData('items', { id: itemId }).itemPrice * quantity
+    const isItemIdExist = getData('items', { id: itemId })[0]
+    if (isItemIdExist) {
+      const transactionItem = {
+        "id": uid(),
+        transactionId,
+        itemId,
+        quantity,
+        "price": getData('items', { id: itemId })[0].itemPrice * quantity
+      }
+      const result = addData('transactionItem', transactionItem)
+      res.status(200).send(result)
     }
-    const result = addData('transactionItem', transactionItem)
-    res.status(200).send(result)
+    else {
+      res.status(404).send('id not found')
+    }
   }
 })
 

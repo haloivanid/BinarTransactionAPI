@@ -2,7 +2,7 @@ const express = require('express')
 const getData = require('../../controllers/getController')
 const app = express.Router()
 
-app.get('/item', (req, res) => {
+app.get('/transaction/item', (req, res) => {
   const query = req.query
   // console.log(req.user.id)
   // const id = req.user.id

@@ -6,7 +6,7 @@ const getData = require('../../controllers/getController')
 app.get('/transaction', (req, res) => {
     if (req.query) {
         const result = getData('transaction', req.query)
-        if (result.lengt != 0) {
+        if (result.length != 0) {
             res.send(result)
         }
         else {

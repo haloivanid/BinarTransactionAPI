@@ -6,8 +6,7 @@ const app = express.Router();
 // app.use(authorization)
 app.patch("/items", (req, res) => {
     const body = req.body
-    const id = req.query.id
-    const result = editData("items", id, body)
+    const result = editData("items", body.id, body)
     res.send(result)
 })
 

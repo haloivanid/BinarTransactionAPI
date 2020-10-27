@@ -15,6 +15,7 @@ app.post('/items', (req, res) => {
     const isItemExist = getData('items', body)
     if (!isItemExist.length) {
         body.id = uid()
+        body.itemPrice = parseInt(body.itemPrice)
         const result = addData('items', body)
         if (result) {
             res.send(result)
