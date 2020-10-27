@@ -3,9 +3,8 @@ const addData = require('../../controllers/addController')
 const getData = require('../../controllers/getController')
 const auth = require('../../middlewares/jwtMiddleware')
 const app = express.Router()
-// const authorization = require('../../middleware/authorizationMiddleware')
 
-// app.use(authorization)
+// app.use(auth)
 
 // uid is a id generator library
 // Reference: https://www.npmjs.com/package/uid
