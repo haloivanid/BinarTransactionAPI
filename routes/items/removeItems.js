@@ -4,15 +4,17 @@ const auth = require('../../middlewares/jwtMiddleware')
 const app = express.Router();
 
 app.delete("/items", auth.verifyJwt(['admin']), (req, res) => {
-    const id = req.query.id;
     const query = req.query;
-    if (id) {
-        removeData.removeDataById("items", id);
-    }
     if (query) {
-        removeData.removeDataByQuery("items", query);
+        const result = removeData.removeDataByQuery("items", query);
+        if (result) {
+            res.status(200).send('data deleted')
+        }
+        else {
+            res.status(404).send('sorry data not found')
+        }
     } else {
-        res.status(400).send("bad request");
+        res.status(400).send("nothing removed");
     }
     res.send("ok");
 });

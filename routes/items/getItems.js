@@ -4,8 +4,8 @@ const getData = require('../../controllers/getController')
 const auth = require('../../middlewares/jwtMiddleware')
 
 app.get('/items', auth.verifyJwt(['admin', 'customer']), (req, res) => {
-    const id = req.query
-    const result = getData('items', id)
+    const query = req.query
+    const result = getData('items', query)
     if (result) {
         res.send(result)
     } else {
