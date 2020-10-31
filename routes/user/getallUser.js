@@ -1,5 +1,6 @@
 const express = require('express')
 const auth = require('../../middlewares/jwtMiddleware')
+const getData = require('../../controllers/getController')
 const app = express.Router()
 
 app.get('/user/customer/all', (_, res) => {
