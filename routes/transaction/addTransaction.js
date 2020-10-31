@@ -8,6 +8,10 @@ const dateToday = require('../../helpers/dateToday')
 //** add transactions */
 app.post('/transaction', auth.verifyJwt(['admin']), (req, res) => {
     if (Object.keys(req.body).length == 0) return res.status(400).send('body not allowed')
+    //** mengecek apakah user memasukkan string kosong ke dalam body */
+    for (const keys in body) {
+        if (body[keys] == "") return res.status(400).send("value of keys in body can't be empty")
+    }
     const bodyStructure = {
         "id": uid(),
         "userId": req.body.userId,

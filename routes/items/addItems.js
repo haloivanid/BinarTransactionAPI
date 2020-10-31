@@ -11,8 +11,8 @@ app.post('/items', auth.verifyJwt(['admin']), (req, res) => {
     //** mengecek apakah user tidak memasukkan data dengan body */
     if (Object.keys(body).length == 0) return res.status(400).send('body must inserted')
     //** mengecek apakah user memasukkan string kosong ke dalam body */
-    for (const i in body) {
-        if (body[i] == "") return res.status(400).send("value of keys in body can't be empty")
+    for (const keys in body) {
+        if (body[keys] == "") return res.status(400).send("value of keys in body can't be empty")
     }
     //** check item price format */
     if (String(parseInt(body.itemPrice)) == "NaN") return res.status(404).send('wrong price format')
