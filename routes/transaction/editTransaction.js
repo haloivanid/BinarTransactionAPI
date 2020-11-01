@@ -20,20 +20,32 @@ app.patch('/transaction', auth.verifyJwt(['admin']), (req, res) => {
     for (const keys in body) {
         if (notEditedKeys.includes(keys)) return res.status(400).send("keys can't be edited")
     }
+
+    const editedTransaction = getData('transaction', { id })[0]
+    if (!editedTransaction) return res.status(404).send('transaction not found')
     if (body.discountId != "") {
         const discount = getData('discount', { id: body.discountId })[0]
         if (discount == 0) return res.status(404).send('discount not found')
-        body.amountTransaction = body.totalPrice - (body.totalPrice * discount.value)
-    }
-    if (body.payment != "") {
-        if (body.payment == body.amountTransaction) {
-            body.paymentStatus = true
+        const afterDiscount = body.totalPrice - (body.totalPrice * discount.value)
+        if (String(afterDiscount) == "NaN") {
+            editedTransaction.amountTransaction = 0
         }
         else {
-            body.paymentStatus = false
+            editedTransaction.amountTransaction = afterDiscount
         }
     }
-    const editStatus = editData('transaction', id, body)
+    if (body.payment != "") {
+        if (body.payment == editedTransaction.amountTransaction) {
+            editedTransaction.paymentStatus = true
+        }
+        else {
+            editedTransaction.paymentStatus = false
+        }
+    }
+    for (const editedKeys in body) {
+        editedTransaction[editedKeys] = body[editedKeys]
+    }
+    const editStatus = editData('transaction', id, editedTransaction)
     if (editStatus) {
         res.status(200).send('ok')
     }
