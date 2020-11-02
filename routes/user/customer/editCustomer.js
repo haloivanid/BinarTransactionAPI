@@ -14,10 +14,10 @@ app.patch('/user', auth.verifyJwt(['admin', "customer"]), (req, res) => {
   }
   if (!body.password || !body.username) return res.status(400).status('or username password needed')
   const isNewUsernameExist = getData('customer', { username: body.username })
-  if (isNewUsernameExist.length) return res.status(400).status('Username has been taken write another one')
+  if (isNewUsernameExist.length || body.username == 'admin') return res.status(400).status('Username has been taken write another one')
   const id = req.userData.id
   body.id = id
-  const result = editData('admin', id, body)
+  const result = editData('customer', id, body)
   if (result) {
     return res.status(200).send('data saved, will use for next login')
   } else {
